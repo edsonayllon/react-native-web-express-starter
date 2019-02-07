@@ -5,7 +5,7 @@ export default class App extends React.Component {
   state = {users: []}
 
   componentDidMount() {
-    fetch('http://localhost:3001/users')
+    fetch('http://localhost:4000/users')
       .then(res => res.json())
       .then(users => this.setState({ users }));
   }
