@@ -8,7 +8,7 @@ import Svg, {
   G,
   Image,
   Line,
-  LinearGradient,
+  LinearGradient as SvgLinearGradient,
   Mask,
   Path,
   Pattern,
@@ -23,6 +23,7 @@ import Svg, {
   TextPath,
   Use
 } from 'react-native-svg';
+import LinearGradient from './components/LinearGradient';
 
 export default class App extends React.Component {
   state = {users: []}
@@ -40,6 +41,17 @@ export default class App extends React.Component {
         {this.state.users.map(user =>
           <Text key={user.id}>{user.username}</Text>
         )}
+
+        <LinearGradient
+          start={{x: 0.0, y: 0.25}} end={{x: 0, y: 1.0}}
+          locations={[0,0.6]}
+          colors={['#4c669f',  '#192f6a']}
+          style={styles.linearGradient}>
+          <Text style={styles.buttonText}>
+            Sign in with Facebook
+          </Text>
+        </LinearGradient>
+
         <View>
           <Svg height = {276} width = {335} viewBox="328 355 335 276">
             <Path fill='#3BA9EE'
@@ -78,5 +90,18 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 120,
-  }
+  },
+  linearGradient: {
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 5
+  },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: 'Gill Sans',
+    textAlign: 'center',
+    margin: 10,
+    color: '#ffffff',
+    backgroundColor: 'transparent',
+  },
 });

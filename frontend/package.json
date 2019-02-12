@@ -8,10 +8,10 @@
     "react-art": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
-    "react-native-linear-gradient": "^2.5.3",
     "react-native-svg": "6.0.0",
     "react-native-svg-web": "^1.0.1",
     "react-native-web": "^0.9.4",
+    "react-native-web-linear-gradient": "^1.0.5",
     "react-scripts": "2.0.5"
   },
   "scripts": {
