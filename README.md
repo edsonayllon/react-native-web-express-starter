@@ -8,7 +8,7 @@ To make the app compatible with React-Native and React, code the app as if it we
 
 If coming from React, replace all `<div>` and text elements such as `<p>` and `<h1>` with `<View>` and `<Text>` elements respectively. For styling, use JSX style CSS with the `Stylesheet` module from React-Native. Examples found in `client/App.js`.
 
-This version of React is currently using React Hooks and functional components. React class components are still compatible with this build. For questions involving React Hooks, please see the [React Hooks documentation](https://reactjs.org/docs/hooks-faq.html). Comparing Hooks to class Components, functionality remains largely the same, however, syntax for component declaration, lifecycle functions, and state management have been updated. 
+This version of React is currently using React Hooks and functional components. React class components are still compatible with this build. Comparing Hooks functional components to class components, functionality remains largely the same, however, syntax for component declaration, lifecycle functions, and state management have been updated. For questions involving React Hooks, please see the [React Hooks documentation](https://reactjs.org/docs/hooks-faq.html). 
 
 Instead of `frontend` and `backend` being used, folders are divided by `client` and `server`. The deciding condition for this change was to accommodate blockchain inclusions to React, Express apps, such as Ethereum and EOS smart contracts. Because both the Node/Express server and smart contracts interacting with public blockchains are both considered backends, more descriptive terminology for each technology has been preferred. 
 
