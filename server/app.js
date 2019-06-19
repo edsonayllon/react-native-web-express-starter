@@ -1,14 +1,16 @@
+require('dotenv').config()
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
-const cors = require("cors");
 const cookieParser = require('cookie-parser');
+const cors = require("cors");
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users.route');
+const usersRouter = require('./routes/users');
 
-const app = express();
+var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,17 +22,20 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-//  Force https in production
+// set up express server to render react client in production
+app.enable("trust proxy");
+app.use(express.static(path.join(__dirname, '../client/web-build')));
+
+// Force https in production
+// If production server uses http, no routes will display, all routes will redirect
 if (app.get('env') === 'production') {
-  app.use(function(req, res, next) {
+  app.use(function (req, res, next) {
     var protocol = req.get('x-forwarded-proto');
     protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
   });
 }
 
-// Routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -49,5 +54,15 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Once client is built in production
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname + '../client/web-build/index.html'), function (err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  });
+})
+
 
 module.exports = app;
