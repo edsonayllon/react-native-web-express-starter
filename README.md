@@ -3,7 +3,7 @@ author: Edson Ayllon
 category: starter code
 tags: 
 - react
-- react-native
+- react native
 - node
 - express
 status: complete
