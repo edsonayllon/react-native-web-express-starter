@@ -1,3 +1,17 @@
+---
+author: Edson Ayllon
+category: starter code
+tags: 
+- react
+- react-native
+- node
+- express
+status: complete
+twitter: https://twitter.com/relativeread
+---
+
+### Starter 2-2018 
+
 # react-native-web-express-starter
 
 ## 1 | Description
